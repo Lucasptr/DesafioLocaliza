@@ -1,0 +1,36 @@
+﻿@model WebApp.MVC.Models.DivisoresNumero
+
+@{
+    var divisores = string.Empty;
+    var divisoresPrimos = string.Empty;
+    var numeroBase = 0;
+
+    if (Model != null)
+    {
+        numeroBase = @Model.NumeroBase;
+        divisores = string.Join(", ", Model.Divisores.Select(x => x.ToString()));
+        divisoresPrimos = string.Join(", ", Model.DivisoresPrimos.Select(x => x.ToString()));
+    }
+
+}
+
+@if(Model != null)
+{ 
+    <div class="row">
+        <h4>Número: @Model.NumeroBase</h4>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(divisores))
+{
+    <div class="row">
+        <label>Divisores: @divisores</label>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(divisoresPrimos))
+{
+    <div class="row">
+        <label>Divisores Primos: @divisoresPrimos</label>
+    </div>
+}
